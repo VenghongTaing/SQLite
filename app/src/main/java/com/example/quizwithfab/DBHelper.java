@@ -15,6 +15,7 @@ class DBHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
 
     private static final String TABLE_NAME = "tblCourse";
+    private static final String TABLE_USER = "tblUser";
     private static final String COLUMN_ID = "_id";
     private static final String COLUMN_COURSE_NAME = "course_name";
     private static final String COLUMN_COURSE_CREDIT = "course_credit";
@@ -36,11 +37,14 @@ class DBHelper extends SQLiteOpenHelper {
                 COLUMN_COURSE_FEE + " TEXT, " +
                 COLUMN_COURSE_DESCRIPTION + " TEXT);";
         db.execSQL(query);
+        //-------------User table----------------------------
+        db.execSQL("create table TABLE_USER (name text primary key,contact text,dob text,email text)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);
         onCreate(db);
     }
 
@@ -96,4 +100,21 @@ class DBHelper extends SQLiteOpenHelper {
         }
         return cursor;
     }
+    public boolean RegisterUserLogin(String userName, String userPass){
+        SQLiteDatabase db = this.getWritableDatabase();
+        try {
+            ContentValues contentValues = new ContentValues();
+            contentValues.put("userName",userName);
+            contentValues.put("userPass",userPass);
+            db.insert("tblUser",null,contentValues);
+            return true;
+        }catch(Exception e){
+            Toast.makeText(context,e.getMessage(),Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+    }
+
+
+
 }
