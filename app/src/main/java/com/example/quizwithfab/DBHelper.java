@@ -60,6 +60,33 @@ class DBHelper extends SQLiteOpenHelper {
         }
     }
 
+    //define method from SQLOpenHelper exten Class to update course
+    void updateCourse(String row_id, String courseName, String courseCredit, String courseFee, String courseDescription){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMN_COURSE_NAME, courseName);
+        contentValues.put(COLUMN_COURSE_CREDIT, courseCredit);
+        contentValues.put(COLUMN_COURSE_FEE, courseFee);
+        contentValues.put(COLUMN_COURSE_DESCRIPTION, courseDescription);
+        long result = db.update(TABLE_NAME, contentValues, "_id=?", new String[]{row_id});
+        if (result == -1){
+            Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(context, "Updated Successfully!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    //define method from SQLOpenHelper exten Class to delete course
+    void deleteCourse(String row_id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        long result = db.delete(TABLE_NAME, "_id=?", new String[]{row_id});
+        if (result == -1){
+            Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(context, "Deleted Successfully!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
     Cursor readAllData(){
         String query = "SELECT * FROM " + TABLE_NAME;
         SQLiteDatabase db = this.getReadableDatabase();
