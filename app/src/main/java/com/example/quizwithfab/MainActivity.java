@@ -39,6 +39,10 @@ public class MainActivity extends AppCompatActivity {
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                //hide button
+                addBtn.hide();
+
                 //Clear data in viewholder
                 file_Write(MainActivity.this, "CourseID", "");
                 file_Write(MainActivity.this, "CourseName", "");
@@ -48,6 +52,10 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(MainActivity.this, add_Item.class);
                 startActivity(intent);
+
+
+
+
             }
         });
 
