@@ -49,8 +49,6 @@ public class LoginUserActivity extends AppCompatActivity {
                     userPass.getEditText().setError("Empty");
                     loginPB.setVisibility(View.GONE);
                 } else {
-                    Toast.makeText(getApplicationContext(), password, Toast.LENGTH_SHORT).show();
-
                     Boolean checkUsernameAndPassword = myDB.checkusernameandpassword(username, password);
                     if (checkUsernameAndPassword == true) {
                         loginPB.setVisibility(View.GONE);
