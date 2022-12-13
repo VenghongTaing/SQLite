@@ -54,7 +54,8 @@ public class LoginUserActivity extends AppCompatActivity {
                     Boolean checkUsernameAndPassword = myDB.checkusernameandpassword(username, password);
                     if (checkUsernameAndPassword == true) {
                         loginPB.setVisibility(View.GONE);
-                        Toast.makeText(getApplicationContext(), "Valid user", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(LoginUserActivity.this,MainActivity.class));
                     } else {
                         loginPB.setVisibility(View.GONE);
                         Toast.makeText(getApplicationContext(), "Invalid user", Toast.LENGTH_SHORT).show();
