@@ -4,14 +4,17 @@ public class User {
     private String userName;
     private String userPass;
 
+    //Create empty constructor
     public User() {
     }
 
+    //Create constructor for assign value to this variables
     public User(String userName, String userPass) {
         this.userName = userName;
         this.userPass = userPass;
     }
 
+    //Getting and Setting
     public String getUserName() {
         return userName;
     }

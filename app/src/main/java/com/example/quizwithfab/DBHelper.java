@@ -135,17 +135,38 @@ class DBHelper extends SQLiteOpenHelper {
         }
 
     }
+    public Boolean checkusername(String username){
+        SQLiteDatabase userDB = this.getWritableDatabase();
+        Cursor cursor = userDB.rawQuery("select * from tblUser where user_name = ?", new String[]{username});
+        if(cursor.getCount() > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public Boolean checkusernameandpassword(String username, String password){
+        SQLiteDatabase userDB = this.getWritableDatabase();
+        Cursor cursor = userDB.rawQuery("select * from tblUser where user_name = ? and user_password = ?", new String[]{username,password});
+        if(cursor.getCount() > 0){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
 
 
     public ArrayList<User> loginUser(String userName, String userPass) {
-        ArrayList<User> userArrayList = new ArrayList<User>();// create list users
         SQLiteDatabase db = this.getWritableDatabase();
+        ArrayList<User> userArrayList = new ArrayList<User>();// create list users
         try {
-            Cursor cursor = db.rawQuery("SELECT * FROM tblUser WHERE userName = '" + userName + "' and userPass = '" + userPass + "'", null);
+            Cursor cursor = db.rawQuery("SELECT * FROM tblUser WHERE user_name = '" + userName + "' and user_password = '" + userPass + "'", null);
+            //Toast.makeText(context,cursor.toString(), Toast.LENGTH_SHORT).show();
             if (cursor.moveToFirst()) {
                 User user = new User();
-                user.setUserName(cursor.getString(1));
-                user.setUserPass(cursor.getString(2));
+                user.setUserName(cursor.getString(0));
+                Toast.makeText(context,cursor.getString(0), Toast.LENGTH_SHORT).show();
+                user.setUserPass(cursor.getString(1));
                 userArrayList.add(user); // add infor user to array list
 
             }

@@ -29,9 +29,9 @@ public class LoginUserActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login_user);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         //Open database
-        myDB = new DBHelper(LoginUserActivity.this);
+        myDB = new DBHelper(this);
         userName = (TextInputLayout) findViewById(R.id.userNameEdt);
-        userPass = (TextInputLayout) findViewById(R.id.userNameEdt);
+        userPass = (TextInputLayout) findViewById(R.id.passEdt);
         loginPB = (ProgressBar) findViewById(R.id.loginPB);
         btnLogin = (Button) findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -49,16 +49,18 @@ public class LoginUserActivity extends AppCompatActivity {
                     userPass.getEditText().setError("Empty");
                     loginPB.setVisibility(View.GONE);
                 } else {
-                    ArrayList<User> userDetails = myDB.loginUser(username, password);
+                    Toast.makeText(getApplicationContext(), password, Toast.LENGTH_SHORT).show();
 
-                    if (userDetails.size() != 0) {
-                        User user = userDetails.get(0);
+                    Boolean checkUsernameAndPassword = myDB.checkusernameandpassword(username, password);
+                    if (checkUsernameAndPassword == true) {
+                        loginPB.setVisibility(View.GONE);
                         Toast.makeText(getApplicationContext(), "Valid user", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(LoginUserActivity.this, MainActivity.class));
-                        finish();
                     } else {
+                        loginPB.setVisibility(View.GONE);
                         Toast.makeText(getApplicationContext(), "Invalid user", Toast.LENGTH_SHORT).show();
                     }
+
+
                 }
 
             }

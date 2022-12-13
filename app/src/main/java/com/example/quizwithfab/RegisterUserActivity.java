@@ -59,9 +59,6 @@ public class RegisterUserActivity extends AppCompatActivity {
                 }else{
                     registerPB.setVisibility(View.GONE);
                    dbHelper.RegisterUserLogin(user_name,user_pass);
-
-
-
                 }
             }
         });
