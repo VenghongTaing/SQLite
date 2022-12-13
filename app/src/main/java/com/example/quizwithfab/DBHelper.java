@@ -56,7 +56,6 @@ class DBHelper extends SQLiteOpenHelper {
         db.execSQL(query_user);
 
 
-
     }
 
     @Override
@@ -135,26 +134,27 @@ class DBHelper extends SQLiteOpenHelper {
         }
 
     }
-    public Boolean checkusername(String username){
+
+    public Boolean checkusername(String username) {
         SQLiteDatabase userDB = this.getWritableDatabase();
         Cursor cursor = userDB.rawQuery("select * from tblUser where user_name = ?", new String[]{username});
-        if(cursor.getCount() > 0){
+        if (cursor.getCount() > 0) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
-    public Boolean checkusernameandpassword(String username, String password){
+
+    public Boolean checkusernameandpassword(String username, String password) {
         SQLiteDatabase userDB = this.getWritableDatabase();
-        Cursor cursor = userDB.rawQuery("select * from tblUser where user_name = ? and user_password = ?", new String[]{username,password});
-        if(cursor.getCount() > 0){
+        Cursor cursor = userDB.rawQuery("select * from tblUser where user_name = ? and user_password = ?", new String[]{username, password});
+        if (cursor.getCount() > 0) {
             return true;
-        }else{
+        } else {
             return false;
         }
 
     }
-
 
     public ArrayList<User> loginUser(String userName, String userPass) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -165,7 +165,7 @@ class DBHelper extends SQLiteOpenHelper {
             if (cursor.moveToFirst()) {
                 User user = new User();
                 user.setUserName(cursor.getString(0));
-                Toast.makeText(context,cursor.getString(0), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, cursor.getString(0), Toast.LENGTH_SHORT).show();
                 user.setUserPass(cursor.getString(1));
                 userArrayList.add(user); // add infor user to array list
 
@@ -179,4 +179,10 @@ class DBHelper extends SQLiteOpenHelper {
     }
 
 
+    public void updatepassword(String userNameFromForgetPasswordForm, String newPass) {
+        SQLiteDatabase userdb = this.getWritableDatabase();
+        String strSQL = "UPDATE tblUser SET user_password = '" + newPass + "' WHERE user_name = '" + userNameFromForgetPasswordForm + "'";
+        userdb.execSQL(strSQL);
+
+    }
 }

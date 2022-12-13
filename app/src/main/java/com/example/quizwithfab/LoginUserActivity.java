@@ -72,4 +72,31 @@ public class LoginUserActivity extends AppCompatActivity {
         startActivity(new Intent(LoginUserActivity.this, RegisterUserActivity.class));
         finish();
     }
+
+    public void gotoForgetPassword(View view) {
+        myDB = new DBHelper(this);
+        loginPB.setVisibility(View.VISIBLE);
+        string = userName.getEditText().getText().toString();
+        String userNameForForgetPassword = userName.getEditText().getText().toString();
+        if(userNameForForgetPassword.isEmpty()) {
+            userName.getEditText().setError("Empty");
+            loginPB.setVisibility(View.GONE);
+        }else{
+
+            Boolean check_userName = myDB.checkusername(userNameForForgetPassword);
+            if(check_userName == true) {
+                loginPB.setVisibility(View.GONE);
+                Intent forgetPassword_intent = new Intent(LoginUserActivity.this,ResetUserPasswordActivity.class);
+                forgetPassword_intent.putExtra("username",string);
+                startActivity(forgetPassword_intent);
+                finish();
+            }else{
+                loginPB.setVisibility(View.GONE);
+                userName.getEditText().setError("Empty or not exist user");
+                Toast.makeText(getApplicationContext(),"Please fill username or not exist user",Toast.LENGTH_SHORT).show();
+
+            }
+        }
+
+    }
 }
