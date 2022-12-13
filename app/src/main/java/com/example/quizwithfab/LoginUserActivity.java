@@ -60,10 +60,7 @@ public class LoginUserActivity extends AppCompatActivity {
                         loginPB.setVisibility(View.GONE);
                         Toast.makeText(getApplicationContext(), "Invalid user", Toast.LENGTH_SHORT).show();
                     }
-
-
                 }
-
             }
         });
     }
