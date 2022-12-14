@@ -2,12 +2,14 @@ package com.example.quizwithfab;
 
 public class CourseList {
 
+    // variables for our coursename,
+    // description, tracks and duration, id.
     private String course_id, course_name, course_credit, course_fee, course_description;
 
     public CourseList (){
 
     }
-
+    // constructor
     public CourseList(String course_id, String course_name, String course_credit, String course_fee, String course_description) {
         this.course_id = course_id;
         this.course_name = course_name;
@@ -16,9 +18,11 @@ public class CourseList {
         this.course_description = course_description;
     }
 
+    // creating getter and setter methods
     public String getCourse_id() {
         return course_id;
     }
+
 
     public void setCourse_id(String course_id) {
         this.course_id = course_id;
@@ -55,4 +59,5 @@ public class CourseList {
     public void setCourse_description(String course_description) {
         this.course_description = course_description;
     }
+
 }
