@@ -1,9 +1,12 @@
 package com.example.quizwithfab;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
@@ -11,8 +14,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class add_Item extends AppCompatActivity {
+import java.util.ArrayList;
 
+public class AddCart extends AppCompatActivity {
     EditText courseName, courseCredit, courseFee, courseDescription;
     Button addBtn, updateBtn, deleteBtn;
     DBHelper db;
@@ -23,11 +27,11 @@ public class add_Item extends AppCompatActivity {
         setContentView(R.layout.activity_add_item);
 
         db = new DBHelper(this);
-
         courseName = findViewById(R.id.nameTxt);
         courseCredit = findViewById(R.id.creditTxt);
         courseFee = findViewById(R.id.courseFeeTxt);
         courseDescription = findViewById(R.id.descriptionTxt);
+
 
         // check if the user is updating or adding
         if (file_Read_String(this, "CourseID").equals("")) {
@@ -83,7 +87,7 @@ public class add_Item extends AppCompatActivity {
                     String fee = courseFee.getText().toString();
                     String description = courseDescription.getText().toString();
 
-                    db.updateCourse(file_Read_String(add_Item.this, "CourseID"), name, credit, fee, description);
+                    db.updateCourse(file_Read_String(AddCart.this, "CourseID"), name, credit, fee, description);
                     finish();
                 }
             });
@@ -92,11 +96,13 @@ public class add_Item extends AppCompatActivity {
             deleteBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    db.deleteCourse(file_Read_String(add_Item.this, "CourseID"));
+                    db.deleteCourse(file_Read_String(AddCart.this, "CourseID"));
                     finish();
                 }
             });
+
         }
+
     }
     //Read string from shared preference
 
