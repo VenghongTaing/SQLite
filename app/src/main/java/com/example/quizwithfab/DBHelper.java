@@ -4,6 +4,7 @@ import androidx.annotation.Nullable;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
@@ -116,5 +117,10 @@ class DBHelper extends SQLiteOpenHelper {
     }
 
 
-
+    public Cursor searchItem(String toString) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + COLUMN_COURSE_NAME + " LIKE '%" + toString + "%'";
+        Cursor cursor = db.rawQuery(query, null);
+        return cursor;
+    }
 }

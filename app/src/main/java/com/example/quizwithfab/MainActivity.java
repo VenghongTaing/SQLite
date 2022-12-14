@@ -52,10 +52,6 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(MainActivity.this, add_Item.class);
                 startActivity(intent);
-
-
-
-
             }
         });
 
