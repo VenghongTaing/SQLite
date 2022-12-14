@@ -27,15 +27,15 @@ public class RegisterUserActivity extends AppCompatActivity {
 
         //--open database---
         dbHelper = new DBHelper(RegisterUserActivity.this);
-
-
         //----------EditText------
         userName = (TextInputLayout) findViewById(R.id.userNameEdtR);
         userPass = (TextInputLayout) findViewById(R.id.passEdtR);
         userConfirmPass = (TextInputLayout) findViewById(R.id.confirmPassEdt);
         registerPB = (ProgressBar) findViewById(R.id.registerPB);
+
         //---Button
         btnRegister = findViewById(R.id.btnRegister);
+
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
