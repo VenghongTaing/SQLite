@@ -186,4 +186,11 @@ class DBHelper extends SQLiteOpenHelper {
         userdb.execSQL(strSQL);
 
     }
+
+    public Cursor searchItem(String toString) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + COLUMN_COURSE_NAME + " LIKE '%" + toString + "%'";
+        Cursor cursor = db.rawQuery(query, null);
+        return cursor;
+    }
 }
