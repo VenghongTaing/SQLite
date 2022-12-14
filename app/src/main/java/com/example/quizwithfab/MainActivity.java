@@ -35,8 +35,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Intent intent = new Intent(MainActivity.this, RegisterUserActivity.class);
-        startActivity(intent);
+//        Intent intent = new Intent(MainActivity.this, RegisterUserActivity.class);
+//        startActivity(intent);
 
         recyclerView = findViewById(R.id.recyclerView);
         addBtn = findViewById(R.id.fab);
