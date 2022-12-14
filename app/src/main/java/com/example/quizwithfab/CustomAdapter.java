@@ -45,6 +45,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         holder.course_fee_txt.setText(courseList.getCourse_fee());
         holder.course_description_txt.setText(courseList.getCourse_description());
 
+        //Row click listener
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

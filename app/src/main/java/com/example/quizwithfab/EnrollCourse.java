@@ -1,6 +1,7 @@
 package com.example.quizwithfab;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -28,6 +29,7 @@ public class EnrollCourse extends AppCompatActivity {
     //create array list to store data
     ArrayList<String> course_id, course_name, course_credit, course_fee, course_description;
     CustomAdapter customAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,5 +115,6 @@ public class EnrollCourse extends AppCompatActivity {
             customAdapter = new CustomAdapter(EnrollCourse.this, list);
             recyclerView.setAdapter(customAdapter);
         }
+
     }
 }

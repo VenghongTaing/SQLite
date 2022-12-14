@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     FloatingActionButton addBtn;
 
     DBHelper myDB;
+
     //create array list to store data
     ArrayList<String> course_id, course_name, course_credit, course_fee, course_description;
 
@@ -34,12 +35,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+//        Intent intent = new Intent(MainActivity.this, RegisterUserActivity.class);
+//        startActivity(intent);
+
         recyclerView = findViewById(R.id.recyclerView);
         addBtn = findViewById(R.id.fab);
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 //hide button
                 addBtn.hide();
 
@@ -55,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Connect to database and create table
         myDB = new DBHelper(MainActivity.this);
 
         course_id = new ArrayList<>();

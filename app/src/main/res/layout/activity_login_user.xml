@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterUserActivity">
+    tools:context=".LoginUserActivity">
     <View
         android:id="@+id/topView"
         android:layout_width="0dp"
         android:layout_height="150dp"
-        android:background="@color/colorPrimary"
+        android:background="@color/colorPrimary2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -18,7 +18,7 @@
         android:id="@+id/view2"
         android:layout_width="0dp"
         android:layout_height="100dp"
-        android:background="@drawable/wave_bg_view"
+        android:background="@drawable/login_bg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/topView" />
@@ -38,96 +38,66 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:text="Already Have an Account?"
+        android:layout_marginTop="48dp"
+        android:text="Haven't an Account?"
         android:textColor="#FFFFFF"
         android:textSize="34sp"
         android:textStyle="bold"
+        android:onClick="goToRegister"
         app:layout_constraintEnd_toStartOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.063"
         app:layout_constraintStart_toStartOf="@+id/topView"
-        app:layout_constraintTop_toTopOf="parent"
-        android:onClick="goToLogin"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/userNameEdtR"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:id="@+id/userNameEdt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="20dp"
         android:layout_marginEnd="32dp"
-        android:hint="Your username"
-        app:counterEnabled="true"
-        app:errorIconDrawable="@drawable/ic_baseline_error_24"
-        app:counterMaxLength="50"
-        app:endIconMode="clear_text"
-        app:errorEnabled="true"
-        app:helperText="Required*"
-        app:helperTextTextColor="#EF0202"
+        android:layout_marginTop="20dp"
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view2"
+        android:hint="Your username"
+        app:startIconDrawable="@drawable/ic_user"
+        app:helperText="Required*"
+        app:helperTextTextColor="#EF0202"
+        app:counterEnabled="true"
+        app:counterMaxLength="50"
+        app:endIconMode="clear_text"
         app:prefixTextColor="@color/purple_200"
-        app:startIconDrawable="@drawable/ic_user">
+        >
 
         <com.google.android.material.textfield.TextInputEditText
+
             android:layout_width="match_parent"
             android:layout_height="58dp"
             android:inputType="text"
             android:maxLength="51" />
     </com.google.android.material.textfield.TextInputLayout>
-
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/passEdtR"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:id="@+id/passEdt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="10dp"
         android:layout_marginEnd="32dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userNameEdt"
         android:hint="Password"
+        app:startIconDrawable="@drawable/ic_lock"
+        app:helperText="Required*"
+        app:helperTextTextColor="#EF0202"
         app:counterEnabled="true"
         app:counterMaxLength="200"
         app:endIconMode="password_toggle"
-        app:helperText="Required*"
-        app:helperTextTextColor="#EF0202"
-        app:layout_constraintStart_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userNameEdtR"
+
         app:prefixTextColor="@color/purple_200"
-
-        app:startIconDrawable="@drawable/ic_lock">
-
-        <com.google.android.material.textfield.TextInputEditText
-
-
-            android:layout_width="match_parent"
-            android:layout_height="58dp"
-            android:inputType="textPassword"
-            android:maxLength="51" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/confirmPassEdt"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="32dp"
-        android:hint="Confirm Password"
-        app:counterEnabled="true"
-        app:counterMaxLength="200"
-        app:endIconMode="password_toggle"
-        app:helperText="Required*"
-        app:helperTextTextColor="#EF0202"
-        app:layout_constraintStart_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passEdtR"
-        app:prefixTextColor="@color/purple_200"
-        app:startIconDrawable="@drawable/ic_lock">
+        >
 
         <com.google.android.material.textfield.TextInputEditText
 
@@ -136,24 +106,52 @@
             android:inputType="textPassword"
             android:maxLength="51" />
     </com.google.android.material.textfield.TextInputLayout>
+
 
     <Button
-        android:id="@+id/btnRegister"
+        android:id="@+id/btnLogin"
         android:layout_width="137dp"
         android:layout_height="50dp"
         android:layout_marginTop="24dp"
         android:background="@drawable/custom_button"
-        android:text="Register"
+        android:text="Login"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.908"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/confirmPassEdt" />
+        app:layout_constraintTop_toBottomOf="@+id/passEdt" />
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/topView"
+        app:layout_constraintVertical_bias="0.817">
+
+        <TextView
+            android:id="@+id/forgetPassTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="30dp"
+            android:layout_weight="1"
+            android:text="Forget Password?"
+            android:onClick="gotoForgetPassword"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+
+            />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -162,7 +160,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/topView"
-        app:layout_constraintVertical_bias="0.936">
+        app:layout_constraintVertical_bias="0.922">
 
         <TextView
             android:id="@+id/textView"
@@ -182,17 +180,16 @@
             android:layout_marginStart="0dp"
             android:layout_marginEnd="30dp"
             android:layout_weight="1"
-            android:text="Log In Here"
+            android:onClick="goToRegister"
+            android:text="Register Here"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:textStyle="bold"
-            android:onClick="goToLogin"
 
             />
     </LinearLayout>
-
     <ProgressBar
-        android:id="@+id/registerPB"
+        android:id="@+id/loginPB"
         style="?android:attr/progressBarStyle"
         android:layout_width="34dp"
         android:layout_height="28dp"
