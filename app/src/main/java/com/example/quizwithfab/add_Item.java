@@ -23,12 +23,11 @@ public class add_Item extends AppCompatActivity {
         setContentView(R.layout.activity_add_item);
 
         db = new DBHelper(this);
+
         courseName = findViewById(R.id.nameTxt);
         courseCredit = findViewById(R.id.creditTxt);
         courseFee = findViewById(R.id.courseFeeTxt);
         courseDescription = findViewById(R.id.descriptionTxt);
-
-
 
         // check if the user is updating or adding
         if (file_Read_String(this, "CourseID").equals("")) {
@@ -97,13 +96,7 @@ public class add_Item extends AppCompatActivity {
                     finish();
                 }
             });
-
-
         }
-
-
-
-
     }
 
     public String file_Read_String(Context context, String FileName_HadSave){
