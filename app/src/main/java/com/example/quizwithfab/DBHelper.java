@@ -121,9 +121,8 @@ class DBHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
-    void RegisterUserLogin(String username, String password,String usertype) {
+    void RegisterUserLogin(String username, String password, String usertype) {
         SQLiteDatabase userDB = this.getWritableDatabase();
-
         ContentValues con = new ContentValues();
         con.put(COLUMN_USER_NAME, username);
         con.put(COLUMN_USER_PASS, password);
@@ -131,13 +130,10 @@ class DBHelper extends SQLiteOpenHelper {
         long result = userDB.insert(TABLE_USER, null, con);
         if (result == -1) {
             Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
-
         } else {
             Toast.makeText(context, "Added Successfully!", Toast.LENGTH_SHORT).show();
             userDB.close();
-
         }
-
     }
 
     public Boolean checkusername(String username) {
@@ -152,18 +148,20 @@ class DBHelper extends SQLiteOpenHelper {
 
     public Boolean checkusernameandpassword(String username, String password) {
         SQLiteDatabase userDB = this.getWritableDatabase();
-        Cursor cursor = userDB.rawQuery("select * from tblUser where user_name = ? and user_password = ?", new String[]{username, password});
+        Cursor cursor =
+                userDB.rawQuery("select * from tblUser where user_name = ? and user_password = ?", new String[]{username, password});
         if (cursor.getCount() > 0) {
             return true;
         } else {
             return false;
         }
-
     }
+
     //check user type
     public String checkusertype(String username) {
         SQLiteDatabase userDB = this.getWritableDatabase();
-        Cursor cursor = userDB.rawQuery("select user_type from tblUser where user_name = ?", new String[]{username});
+        Cursor cursor =
+                userDB.rawQuery("select user_type from tblUser where user_name = ?", new String[]{username});
         String usertype = "";
         if (cursor.getCount() > 0) {
             while (cursor.moveToNext()) {

@@ -38,6 +38,8 @@ public class RegisterUserActivity extends AppCompatActivity implements AdapterVi
         userPass = (TextInputLayout) findViewById(R.id.passEdtR);
         userConfirmPass = (TextInputLayout) findViewById(R.id.confirmPassEdt);
         registerPB = (ProgressBar) findViewById(R.id.registerPB);
+
+
         userType = (Spinner) findViewById(R.id.spinner_usertype);
         userType.setOnItemSelectedListener(this);
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, userTypesList);
@@ -87,11 +89,9 @@ public class RegisterUserActivity extends AppCompatActivity implements AdapterVi
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
-//        Toast.makeText(getApplicationContext(),
-//                        userTypesList[position],
-//                        Toast.LENGTH_LONG)
-//                .show();
+
         getUserType = userTypesList[position];
+
         if ( userTypesList[position] == "teacher"){
             Toast.makeText(getApplicationContext(),"teacher",Toast.LENGTH_LONG).show();
         }

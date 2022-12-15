@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     FloatingActionButton addBtn;
+    View view;
 
     DBHelper myDB;
 
@@ -35,10 +36,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        Intent intent = new Intent(MainActivity.this, RegisterUserActivity.class);
-//        startActivity(intent);
+
 
         recyclerView = findViewById(R.id.recyclerView);
+
         addBtn = findViewById(R.id.fab);
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,6 +58,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        view = findViewById(R.id.enrollview);
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, EnrollCourse.class);
+                startActivity(intent);
+            }
+        });
 
         //Connect to database and create table
         myDB = new DBHelper(MainActivity.this);
@@ -72,15 +81,6 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
         recyclerView.setAdapter(customAdapter);
 
-        //Test rows
-//        ArrayList<CourseList> list = new ArrayList<>();
-//
-//        list.add(new CourseList("1", "Course 01", "3", "1000", "This is a course 1"));
-//        list.add(new CourseList("2", "Course 02", "3", "2000", "This is a course 2"));
-//        list.add(new CourseList("3", "Course 03", "3", "3000", "This is a course 3"));
-//
-//        customAdapter = new CustomAdapter(MainActivity.this, list);
-//        recyclerView.setAdapter(customAdapter);
     }
 
     //Checking if main activity is on restart
