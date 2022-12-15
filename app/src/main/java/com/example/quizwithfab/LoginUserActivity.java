@@ -50,10 +50,20 @@ public class LoginUserActivity extends AppCompatActivity {
                     loginPB.setVisibility(View.GONE);
                 } else {
                     Boolean checkUsernameAndPassword = myDB.checkusernameandpassword(username, password);
-                    if (checkUsernameAndPassword == true) {
-                        loginPB.setVisibility(View.GONE);
-                        Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(LoginUserActivity.this,MainActivity.class));
+                    String userType = myDB.checkusertype(username);
+                    if (checkUsernameAndPassword == true ) {
+                        if (userType.equals("user")){
+                            loginPB.setVisibility(View.GONE);
+                            Toast.makeText(getApplicationContext(), "Login successful and User Type USER", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(LoginUserActivity.this,MainActivity.class));
+                        }else if (userType.equals("teacher")){
+                            loginPB.setVisibility(View.GONE);
+                            Toast.makeText(getApplicationContext(), "Login successful and User Type TEACHER", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(LoginUserActivity.this,MainActivity.class));
+
+                        }
+
+
                     } else {
                         loginPB.setVisibility(View.GONE);
                         Toast.makeText(getApplicationContext(), "Invalid user", Toast.LENGTH_SHORT).show();

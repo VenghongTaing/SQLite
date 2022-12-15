@@ -160,6 +160,18 @@ class DBHelper extends SQLiteOpenHelper {
         }
 
     }
+    //check user type
+    public String checkusertype(String username) {
+        SQLiteDatabase userDB = this.getWritableDatabase();
+        Cursor cursor = userDB.rawQuery("select user_type from tblUser where user_name = ?", new String[]{username});
+        String usertype = "";
+        if (cursor.getCount() > 0) {
+            while (cursor.moveToNext()) {
+                usertype = cursor.getString(0);
+            }
+        }
+        return usertype;
+    }
 
     public ArrayList<User> loginUser(String userName, String userPass) {
         SQLiteDatabase db = this.getWritableDatabase();
