@@ -55,7 +55,6 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="348dp"
         android:layout_height="80dp"
-        android:layout_marginStart="32dp"
         android:hint="Your username"
         app:counterEnabled="true"
         app:counterMaxLength="50"
@@ -64,6 +63,7 @@
         app:errorIconDrawable="@drawable/ic_baseline_error_24"
         app:helperText="Required*"
         app:helperTextTextColor="#EF0202"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view2"
@@ -72,7 +72,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="57dp"
+            android:layout_height="50dp"
             android:inputType="text"
             android:maxLength="51" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -80,29 +80,28 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/passEdtR"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="32dp"
+        android:layout_width="339dp"
+        android:layout_height="67dp"
+        android:layout_marginTop="5dp"
         android:hint="Password"
         app:counterEnabled="true"
         app:counterMaxLength="200"
         app:endIconMode="password_toggle"
         app:helperText="Required*"
         app:helperTextTextColor="#EF0202"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userNameEdtR"
-        app:prefixTextColor="@color/purple_200"
 
+        app:prefixTextColor="@color/purple_200"
         app:startIconDrawable="@drawable/ic_lock">
 
         <com.google.android.material.textfield.TextInputEditText
 
 
             android:layout_width="match_parent"
-            android:layout_height="58dp"
+            android:layout_height="50dp"
             android:inputType="textPassword"
             android:maxLength="51" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -110,17 +109,16 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/confirmPassEdt"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="32dp"
+        android:layout_width="344dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="5dp"
         android:hint="Confirm Password"
         app:counterEnabled="true"
         app:counterMaxLength="200"
         app:endIconMode="password_toggle"
         app:helperText="Required*"
         app:helperTextTextColor="#EF0202"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passEdtR"
@@ -130,7 +128,7 @@
         <com.google.android.material.textfield.TextInputEditText
 
             android:layout_width="match_parent"
-            android:layout_height="58dp"
+            android:layout_height="50dp"
             android:inputType="textPassword"
             android:maxLength="51" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -139,16 +137,16 @@
         android:id="@+id/btnRegister"
         android:layout_width="137dp"
         android:layout_height="50dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/custom_button"
         android:text="Register"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.908"
+        app:layout_constraintHorizontal_bias="0.829"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/confirmPassEdt" />
+        app:layout_constraintTop_toBottomOf="@+id/spinner_usertype" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -200,5 +198,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.474"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinner_usertype"
+        android:layout_width="138dp"
+        android:layout_height="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.845"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="48dp"
+        android:text="Select User Types"
+        android:textColor="#020202"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/confirmPassEdt" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
