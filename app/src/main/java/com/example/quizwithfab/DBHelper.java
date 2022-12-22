@@ -131,7 +131,6 @@ class DBHelper extends SQLiteOpenHelper {
 
         } else {
             Toast.makeText(context, "Added Successfully!", Toast.LENGTH_SHORT).show();
-
         }
 
     }

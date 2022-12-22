@@ -58,7 +58,9 @@ public class RegisterUserActivity extends AppCompatActivity {
                     registerPB.setVisibility(View.GONE);
                 }else{
                     registerPB.setVisibility(View.GONE);
-                   dbHelper.RegisterUserLogin(user_name,user_pass);
+                    dbHelper.RegisterUserLogin(user_name,user_pass);
+
+                    startActivity(new Intent(RegisterUserActivity.this,MainActivity.class));
                 }
             }
         });
